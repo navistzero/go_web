@@ -1,0 +1,47 @@
+CREATE TABLE `article` (
+`id` bigint(40) NOT NULL AUTO_INCREMENT,
+`content` longtext NOT NULL,
+`category_id` bigint(40) NOT NULL,
+`title` varchar(1024) NOT NULL DEFAULT '',
+`view_count` int(11) NOT NULL DEFAULT 0,
+`comment_count` int(11) NOT NULL DEFAULT 0,
+`user_name` varchar(256) NOT NULL DEFAULT '',
+`status` int(11) NOT NULL DEFAULT 0,
+`summary` varchar(256) NOT NULL DEFAULT '',
+`create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+`updata_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `category` (
+`id` bigint(20) NOT NULL AUTO_INCREMENT,
+`category_name` varchar(256) NOT NULL DEFAULT '',
+`category_no` int(11) NOT NULL DEFAULT 0,
+`create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`updata_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `comment` (
+`id` bigint(20) NOT NULL AUTO_INCREMENT,
+`content` text NOT NULL,
+`user_name` varchar(256) NOT NULL DEFAULT '',
+`status` int(11) NOT NULL DEFAULT 0,
+`article_id` bigint(40) NOT NULL DEFAULT 0,
+`create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `leftmessage` (
+`id` bigint(20) NOT NULL AUTO_INCREMENT,
+`user_name` varchar(256) NOT NULL DEFAULT '',
+`email` varchar(256) NOT NULL DEFAULT '',
+`content` text NOT NULL,
+`create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`updata_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
